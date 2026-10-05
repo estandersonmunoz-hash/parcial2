@@ -1,0 +1,10 @@
+services:
+  backend:
+    build: .
+    env_file: .env
+    volumes:
+      - ./ca.pem:/app/certs/ca.pem:ro
+      - /var/log/mesa_ayuda:/var/log/mesa_ayuda
+    ports:
+      - "100.83.101.80:${APP_PORT:-8000}:${APP_PORT:-8000}"
+    restart: unless-stopped
